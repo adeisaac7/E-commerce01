@@ -1,0 +1,108 @@
+.artisan_service_page{
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+}
+.artisan_image{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.artisan_service_page h1{
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    color: #f38040;
+}
+.artisan_service_page h2, .artisan_service_page h3{
+    font-size: 1.8rem;
+    margin-top: 25px;
+    color: #f38040;
+}
+.artisan_service_page p, .artisan_service_page ul li{
+    font-size: 1.1rem;
+    line-height: 1.0;
+}
+.artisan_service_page ul{
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    text-align: left;
+    max-width: 600px;
+}
+.artisan_service_page ul li{
+    background-color: #333;
+    color: #f38040;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+.artisan_service_page ul li:hover{
+    background-color: #f38040;
+    color: #262626;
+    transition: 0.3s ease;
+}
+@media (max-width:600px) {
+    .artisan_service_page{
+        padding: 20px;
+        max-width: 90%;
+    }
+    .artisan_image{
+        width: 150px;
+        height: 150px;
+    }
+    .artisan_service_page h1{
+        font-size: 1.8rem;
+    }
+    .artisan_service_page h2, .artisan_service_page h3{
+        font-size: 1.5rem;
+    }
+    .artisan_service_page p, .artisan_service_page ul li{
+        font-size: 1rem;
+    }
+}
+
+@media (min-width:601px) and (max-width:1024px) {
+    .artisan_service_page{
+        padding: 30px;
+        max-width: 95%;
+    }
+    .artisan_image{
+        width: 200px;
+        height: 200px;
+    }
+    .artisan_service_page h1{
+        font-size: 2rem;
+    }
+    .artisan_service_page h2, .artisan_service_page h3{
+        font-size: 1.7rem;
+    }
+    .artisan_service_page p, .artisan_service_page ul li{
+        font-size: 1.05rem;
+    }
+}
+
+@media (min-width:1025px) {
+    .artisan_service_page{
+        max-width: 900px;
+        padding: 50px;
+    }
+    .artisan_image{
+        width: 250px;
+        height: 250px;
+    }
+    .artisan_service_page h1{
+        font-size: 2.5rem;
+    }
+    .artisan_service_page h2, .artisan_service_page h3{
+        font-size: 1.9rem;
+    }
+    .artisan_service_page p, .artisan_service_page ul li{
+        font-size: 1.2rem;
+    }
+}

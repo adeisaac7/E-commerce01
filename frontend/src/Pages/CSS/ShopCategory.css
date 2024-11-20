@@ -1,0 +1,147 @@
+.shop-category{
+position: relative;
+}
+
+.shop-category .shopCategory-products{
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-auto-rows: minmax(300px, auto) !important;
+    gap: 60px !important;
+    padding: 16px!important;
+    justify-items: center !important;
+}
+.hero-section{
+    position: relative;
+    background-image: url('../../Components/Assets/hero-img.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+    margin-bottom: 30px;    
+}
+.hero-section::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.hero-content{
+    position: relative;
+    z-index: 2;
+    color: #ececec;
+    text-align: center;
+}
+.hero-content h1{
+    font-size: 4rem;
+    margin-bottom: 5px;
+    font-weight: 800;
+    
+}
+.hero-content p{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+.shop-now-btn{
+    background-color: #fe8040;
+    border: none;
+    color: #303030;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* CHANGE */
+.shop-now-btn:hover{
+    background-color: #e67333;
+    /* Slightly Saturated Orange: #ff7033 */
+}
+.shopCategory-indexSort{
+    margin: 0 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.shopCategory-indexSort span{
+    font-weight: bold;
+}
+.shopCategory-sort{
+    display: none;
+    align-items: center;
+}
+.shopCategory-sort.show{
+    display: flex;
+    font-weight: bold;
+}
+.dropdown{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(80%) contrast(100%);
+}
+/* .shopcategory-loadmore{
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+    cursor: pointer;
+} */
+
+hr{
+    margin-top: 90px;
+    height: 3px;
+    background-color: #ccc;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .shopCategory-products{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        padding: 10px;
+    }
+    .hero-content h1{
+        font-size: 2.5rem;
+    }
+    .hero-content p{
+        font-size: 1.2rem;
+    }
+    .shop-now-btn{
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width:1024px) {
+    .shopCategory-products{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        padding: 12px;
+    }
+    .hero-content h1{
+        font-size: 3rem;
+    }
+    .hero-content p{
+        font-size: 1.3rem;
+    }
+    .shop-now-btn{
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+}
+
+@media (min-width:1025px) {
+    .shopCategory-products{
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }    
+}
+
+

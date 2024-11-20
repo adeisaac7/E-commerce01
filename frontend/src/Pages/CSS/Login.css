@@ -1,0 +1,105 @@
+body, html{
+    height: 100%;
+    margin: 0;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    margin: auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pageHeader{
+    text-align: center;
+    margin-bottom: 20px;    
+}
+.currentState{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.currentState.login{
+    color:#337ab7 ;
+}
+.currentState.signup{
+    color:#28a745 ;
+}
+
+input{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+input:focus{
+    border-color: var(--primary-color);
+}
+.loginBottomContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.bottomContent{
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+.btn1, .btn2{
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.btn1:hover, .btn2:hover{
+    color: #0056b3;
+}
+
+.btn3{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0056b3;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition:  background-color 0,3s;
+}
+
+.btn3:hover {
+    background-color: var(--hover-color);
+  }
+
+  :root {
+    --primary-color: #337ab7;
+    --hover-color: #286090;
+  }
+  
+  form.signup :root {
+    --primary-color: #28a745;
+    --hover-color: #218838;
+  }
+
+.loginOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
