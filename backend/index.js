@@ -14,11 +14,23 @@ connectDB()
 connectCloudinary()
 
 //middleware
-app.use(express.json())
+const allowedOrigins =[
+    'http://localhost:3000',
+    'https://e-commerce-frontend-three-pi.vercel.app',
+];
+
 app.use(cors({
-    origin: "http://localhost:3000",
-    credentials:  true,
+    origin: (origin, callback) => {
+        if(allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else{
+            callback(new Error('Not allowed by CORS'))
+        }
+    },
+    credentials: true,
 }));
+
+app.use(express.json());
 
 //api endpoints
 app.use("/api/user",userRouter)
@@ -29,5 +41,5 @@ app.get("/", (req,res)=>{
     res.send("API is Working")
 })
 
-app.listen(port, ()=> console.log('Server started on PORT :'+ port))
+app.listen(port, ()=> console.log('Server started on PORT :'+ port));
 
