@@ -16,8 +16,7 @@ connectCloudinary()
 //middleware
 const allowedOrigins =[
     'http://localhost:3000',
-    'https://craftshub-backend.onrender.com',
-  
+    'https://craftshub-frontend.vercel.app',
 ];
 
 app.use(cors({
