@@ -13,7 +13,7 @@ const ShopContextProvider = (props) =>{
 
     const [userLocation, setUserLocation] = useState(null);
 
-    const backendUrl =  "http://localhost:5000";
+    const backendUrl =  "http://localhost:5001";
 
     const [token, setToken] = useState(localStorage.getItem('token') || '');
 
@@ -89,7 +89,6 @@ const ShopContextProvider = (props) =>{
                 (artisan) => artisan.location?.toLowerCase() === userLocation.toLowerCase()
             );
             console.log("Filtered artisans for location:", userLocation , filtered);
-            
             setFilteredArtisans(filtered.length > 0 ? filtered : artisans);
         } else{
             setFilteredArtisans(artisans);
