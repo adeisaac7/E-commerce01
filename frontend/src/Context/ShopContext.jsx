@@ -13,7 +13,7 @@ const ShopContextProvider = (props) =>{
 
     const [userLocation, setUserLocation] = useState(null);
 
-    const backendUrl = process.env.BACKEND_URL || "http://localhost:5001";
+    const backendUrl = process.env.BACKEND_URL || "https://craftshub-backend.onrender.com";
 
     const [token, setToken] = useState(localStorage.getItem('token') || '');
 
