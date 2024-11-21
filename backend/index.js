@@ -17,6 +17,7 @@ connectCloudinary()
 const allowedOrigins =[
     'http://localhost:3000',
     'https://e-commerce-frontend-three-pi.vercel.app',
+    'https://e-commerce-frontend-nine-kohl.vercel.app',
 ];
 
 app.use(cors({
