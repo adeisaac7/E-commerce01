@@ -16,6 +16,7 @@ export const Navbar = () => {
     const [location, setLocation] = useState("Enter your location");
     const [showPopup, setShowPopup] = useState(false);
     const [derivedLocation, setDerivedLocation] = useState('');
+    const [locationErrorMessage, setLocationErrorMessage] = useState('');
     const [showDropdown, setShowDropdown] = useState(false);
     const {token, setToken} = useContext(ShopContext);
 
@@ -45,31 +46,57 @@ export const Navbar = () => {
             return;
           }
 
-          navigator.geolocation.getCurrentPosition((position) => {
+          navigator.geolocation.getCurrentPosition(async(position) => {
             const { latitude, longitude } = position.coords;
             console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-          
             const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
-
-            fetch(url)
-              .then((response) => response.json())
-              .then((data) => {
-
-                console.log("Full Location Data:", data);
-
-                const city = data.address.city;
-                setDerivedLocation(city)
-                setLocation(city || "Unknown location");
-                setShowPopup(true);
-              })
-              .catch(() => {
-                toast.error("Error retrieving location");
-              });
-          }, () => {
-            toast.error("Unable to retrieve your Location");
-          });
           
+        try{
+            const response = await fetch(url);
+            const data = await response.json();
+
+            console.log("Full Location Data:", data);
+
+            const city = data.address?.city || data.address?.town || data.address?.village;
+            const  state = data.address?.state;
+            const  country = data.address?.country;
+
+            const locationName = city || state || country || "Unknown location";
+
+            setDerivedLocation(locationName);
+            setLocation(locationName);
+            setShowPopup(true);
+            setLocationErrorMessage('');
+        } catch(error) {
+          console.error("Error retrieving location:",  error);
+          toast.error("Failed to retrieve location data.");
+        }
+      },
+      (error) => {
+        console.error("Geolocation error:", error);
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+              toast.warning("Location access denied. Please enable it in browser settings.");
+
+              setLocationErrorMessage("If location detection fails, please enter your city manually.");
+              break;
+          case error.POSITION_UNAVAILABLE:
+              toast.error("Location unavailable. Check your network.");
+              setLocationErrorMessage("If location detection fails, please enter your city manually.")
+              break;
+          case error.TIMEOUT:
+              toast.error("Location request timed out.");
+              setLocationErrorMessage("If location detection fails, please enter your city manually.");
+              break;
+          default:
+              toast.error("Unknown error occurred.");
+              setLocationErrorMessage("If location detection fails, please enter your city manually.")
+      }
+    }
+          );
         };
+
+
 
         const handleLocationClick = () =>   fetchLocation();
   
@@ -186,8 +213,8 @@ export const Navbar = () => {
               </Link>
             )}
           </div>
+          {locationErrorMessage && <p className='location-error'>{locationErrorMessage}</p>}
           </div>
-
          
         {showPopup && (
             <div className='location-popup'>
